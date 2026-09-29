@@ -255,6 +255,16 @@ transformer also involves these choices:
 - **Fine-tune.** Start from the pretrained weights with the rewire applied.
   The stream path is untouched, so training only has to fix the
   low-resolution error terms above, not relearn the model.
+- **Calibrate with teacher forcing first.** Before any full fine-tuning,
+  distill the original model into the rewired one: run both on the same
+  batch, freeze the original, and regress the rewired output (and/or the
+  middle's `delta`) onto the original's, e.g. with an MSE loss. This is much
+  faster than task fine-tuning because the target is known exactly at every
+  step — no environment, no labels, no sampling noise. The error terms in
+  section 6 give the calibration a small, well-defined correction to learn,
+  and the exactness guarantee means the starting point is already close.
+  Only after the outputs match, switch to normal task fine-tuning to adapt
+  to the task itself.
 
 ---
 
@@ -298,12 +308,14 @@ everything is then "update", and the skip has little left to protect.
 
 ## LLM usage
 
-This work was created with the help of large language models via OpenCode:
-the mathematical exposition, the README, and the reference implementation
-were drafted, refactored, and checked with LLM assistance, under human
-direction and review. All claims are verified numerically by
-[`residual_unet_7_layers.py`](residual_unet_7_layers.py), so the
-identities stand on their own regardless of how the text was produced. 
+This work was created with the help of large language models (Claude / GLM
+via OpenCode): the mathematical exposition, the README, and the reference
+implementation were drafted, refactored, and checked with LLM assistance,
+under human direction and review. All claims are verified numerically by
+[`residual_unet_7_layers.py`](residual_unet_7_layers.py), so the identities
+stand on their own regardless of how the text was produced. This note
+follows the disclosure convention used on arXiv and in NeurIPS / ICML
+submissions.
 
 ---
 
