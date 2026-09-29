@@ -317,6 +317,8 @@ stand on their own regardless of how the text was produced. This note
 follows the disclosure convention used on arXiv and in NeurIPS / ICML
 submissions.
 
+P.S claude is good at ascii explanation 
+
 ---
 
 ## Citing
