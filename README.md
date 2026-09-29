@@ -293,3 +293,18 @@ The random weights are scaled down (`Stack(scale=0.3)`) so each layer's
 update is small next to the stream, as in a trained residual net. At
 `scale=1` the five middle updates add up to about 4x the stream. Almost
 everything is then "update", and the skip has little left to protect.
+
+---
+
+## Citing
+
+If you use the residual → U-Net rewiring in your research, please cite:
+
+```bibtex
+@software{lodestone_residual_unet,
+  author = {lodestone},
+  title = {residual-unet: Turning residual stacks into U-Nets by pooling only the middle's update},
+  url = {https://github.com/lodestone-rock/residual-unet},
+  year = {2026}
+}
+```
