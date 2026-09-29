@@ -296,6 +296,17 @@ everything is then "update", and the skip has little left to protect.
 
 ---
 
+## LLM usage
+
+This work was created with the help of large language models via OpenCode:
+the mathematical exposition, the README, and the reference implementation
+were drafted, refactored, and checked with LLM assistance, under human
+direction and review. All claims are verified numerically by
+[`residual_unet_7_layers.py`](residual_unet_7_layers.py), so the
+identities stand on their own regardless of how the text was produced. 
+
+---
+
 ## Citing
 
 If you use the residual → U-Net rewiring in your research, please cite:
